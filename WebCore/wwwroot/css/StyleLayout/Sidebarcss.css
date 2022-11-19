@@ -1,0 +1,26 @@
+﻿.sidebar {
+    float: left;
+    height: 1000px;
+    width: 25%;
+    margin: 10px;
+    background-color: #222222;
+}
+
+    .sidebar div.box {
+        background-color: #2C2C2C;
+        height: 80px;
+        position: relative;
+        text-align: center;
+        padding-top: 22px;
+    }
+
+    .sidebar img.user {
+        /*position: initial;*/
+        height: 320px;
+        right: 50%;
+    }
+
+    .sidebar h1 {
+        color: #21F3D7;
+        font-size: 16px;
+    }

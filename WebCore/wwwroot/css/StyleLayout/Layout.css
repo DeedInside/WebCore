@@ -1,0 +1,32 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 20px;
+    width: 100%;
+    min-height: 100vh;
+    color: white;
+    background-color: #0A0A0A;
+}
+
+.Wrapper {
+    margin-top: 100px;
+    background-color: #101010;
+    width: 1300px;
+    position: absolute;
+    left: 50%;
+    margin-left: -650px;
+}
+
+.Traigle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 350px solid #21F3D7;
+    border-left: 0px solid transparent;
+    border-right: 350px solid transparent;
+}

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="~/css/stylelayout/header.css" rel="stylesheet" />
+    <link href="~/css/stylelayout/layout.css" rel="stylesheet" />
+    <link href="~/css/stylelayout/sidebarcss.css" rel="stylesheet" />
+
+	<title>Home</title>
+</head>
+<body>
+	<div class="Traigle"></div>
+	<div class="Wrapper">
+		<div class="sidebar">
+			<img class="user" src="~/image/cat.png" title="img" />
+			<div class="box">
+				<p>Зубенко Михаил</p>
+				<h1>C# Developer</h1>
+			</div>
+		</div>
+
+		<div class="mainHeader">
+			<div class="header">
+				<div class="list_li"></div>
+				<ul>
+					<li><a class="item" href="#">Home</a></li>
+					<li><a class="item" href="#">About</a></li>
+					<li><a class="item" href="#">Skils</a></li>
+					<li><a class="item" href="#">Edication</a></li>
+					<li><a class="item" href="#">Portfolio</a></li>
+					<li><a class="item" href="#">Experiece</a></li>
+					<li><a class="item" href="#">Blog</a></li>
+					<li><a class="item" href="#">Contact</a></li>
+					<li><img src="~/image/magnifier.png"/></li>
+					<li><img src="~/image/menu.png"/></li>
+				</ul>
+			</div>
+
+			@RenderBody()
+
+		</div>
+	</div>
+</body>
+</html>

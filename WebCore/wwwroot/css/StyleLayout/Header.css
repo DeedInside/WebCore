@@ -1,0 +1,39 @@
+﻿.header {
+    float: left;
+    height: 80px;
+    width: 71%;
+    margin: 10px;
+    background-color: #222222;
+}
+
+    .header ul li {
+        display: inline-block;
+        margin: 15px;
+        margin-top: 30px;
+        position: relative;
+    }
+
+    .header img {
+        width: 25px;
+        height: 25px;
+        margin-bottom: -5px;
+    }
+
+.list_li {
+    position: absolute;
+    background-color: #21F3D7;
+    width: 80px;
+    height: 100px;
+    top: 0;
+}
+
+.header a.item:active,
+a.item {
+    text-decoration: none;
+    color: white;
+    transition: transform .2s ease-in-out;
+}
+
+.header a.item:hover, div.list_li {
+    color: red;
+}
