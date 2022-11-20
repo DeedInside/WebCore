@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<WebCore.Domain.Models.User>
+@{
 	Layout = "_Layout";
 }
 <head>
@@ -22,4 +23,11 @@
 
 <div class="content">
 	<H1> Content </H1>
+	@foreach(var item in Model)
+	{
+	 <h2>@item.Name</h2>
+	 <h3>@item.Age</h3>
+	 <h3>@item.Email</h3>
+	}
+	
 </div>

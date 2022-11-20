@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,13 @@ namespace WebCore.DALL.Repositories
     /// </summary>
     public class UserRepository : IUserRepository
     {
+        private readonly ApplicationContext _context;
+
+        public UserRepository(ApplicationContext context)
+        {
+            _context = context;
+        }
+
         public bool Create(User Entity)
         {
             throw new NotImplementedException();
@@ -23,9 +31,9 @@ namespace WebCore.DALL.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<List<User>> GetAll()
+        public async Task<List<User>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _context.UserSQL.ToListAsync();
         }
 
         public User GetName(string Name)

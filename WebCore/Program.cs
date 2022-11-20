@@ -1,7 +1,10 @@
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using WebCore.DALL;
 using WebCore.DALL.Interfaces;
 using WebCore.DALL.Repositories;
+using WebCore.Service.Implementations;
+using WebCore.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,7 @@ builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServe
 
 // Register interfases to project
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

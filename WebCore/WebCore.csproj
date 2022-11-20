@@ -13,6 +13,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WebCore.DALL\WebCore.DALL.csproj" />
+    <ProjectReference Include="..\WebCore.Service\WebCore.Service.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

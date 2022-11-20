@@ -1,12 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebCore.Service.Implementations;
+using WebCore.Service.Interfaces;
 
 namespace WebCore.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IUserService UserService;
+
+        public HomeController(IUserService userService)
         {
-            return View();
+            UserService = userService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var response = await UserService.GetUsers();
+
+            return View(response.Data);
         }
     }
 }
