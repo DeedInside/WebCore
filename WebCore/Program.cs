@@ -20,6 +20,10 @@ builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServe
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 
+
+builder.Services.AddScoped<IBlogNewsRepository, BlogNewsRepository>();
+builder.Services.AddScoped<IBlogNewsService, BlogNewsService>();
+
 var app = builder.Build();
 
 app.UseStaticFiles();

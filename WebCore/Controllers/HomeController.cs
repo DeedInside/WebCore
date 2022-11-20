@@ -7,16 +7,18 @@ namespace WebCore.Controllers
     public class HomeController : Controller
     {
         public IUserService UserService;
+        public IBlogNewsService BlogNewsService;
 
-        public HomeController(IUserService userService)
+        public HomeController(IUserService userService, IBlogNewsService blogNewsService)
         {
             UserService = userService;
+            BlogNewsService = blogNewsService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var response = await UserService.GetUsers();
+            var response = await BlogNewsService.GetElemetBlogNews();
 
             return View(response.Data);
         }
