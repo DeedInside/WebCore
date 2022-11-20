@@ -19,8 +19,16 @@ namespace WebCore.Service.Implementations
             var baseResponse = new BaseResponse<IEnumerable<User>>();
             var users = await _userRepository.GetAll();
 
-            baseResponse.Data = users;
-
+            if (users.Count > 0)
+            {
+                baseResponse.Data = users;
+                baseResponse.Description = "Выгрузка прошла успешно";
+                return baseResponse;
+            }
+            else
+            {
+                baseResponse.Description = "Всё пошло по пиздец, переделывай";
+            }
             
             return baseResponse;
         }
