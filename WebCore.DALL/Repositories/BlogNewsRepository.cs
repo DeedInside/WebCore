@@ -17,10 +17,13 @@ namespace WebCore.DALL.Repositories
         {
             _context = context;
         }
-        public bool Create(BlogNews Entity)
+        public async Task<bool> Create(BlogNews Entity)
 		{
-			throw new NotImplementedException();
-		}
+			await _context.BlogNewsSQL.AddAsync(Entity);
+			await _context.SaveChangesAsync();
+
+			return true;
+        }
 
 		public bool Delete(int id)
 		{

@@ -1,0 +1,52 @@
+﻿.ItemNews {
+    width: 98%;
+    margin: 10px;
+    display: inline-block;
+    background-color: #2C2C2C;
+}
+
+.contentHome {
+    float: left;
+    width: 71%;
+    height: 100%;
+    background-color: #222222;
+    margin: 10px;
+}
+.ButtonAction {
+    background-color: #21F3D7;
+    color: black;
+    width: 90px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 30%;
+    line-height: 30px;
+    text-align: center;
+}
+
+.LoginOut {
+    margin: 20px;
+    opacity: 0;
+    transition: 0.5s;
+    position: absolute;
+}
+
+.LoginOpen {
+    opacity: 1;
+    margin-top: 50%;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 165px;
+    background-color: #2C2C2C;
+    padding-left: 30px;
+    padding-top: 20px;
+    position: relative;
+}
+.LoginOut label.LabelLogin {
+    margin-right: 38px;
+}
+
+.loginANDpassword {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}

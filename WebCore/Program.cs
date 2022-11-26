@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using WebCore.DALL;
@@ -24,14 +25,22 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBlogNewsRepository, BlogNewsRepository>();
 builder.Services.AddScoped<IBlogNewsService, BlogNewsService>();
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new PathString("/Home/Index");
+                    options.AccessDeniedPath = new PathString("/Home/Index");
+                });
+builder.Services.AddAuthorization();
 var app = builder.Build();
 
 app.UseStaticFiles();
 
+app.UseAuthentication();    
+app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}");
-
-//app.MapGet("/", () => "Hello World!");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

@@ -1,0 +1,28 @@
+﻿@model WebCore.Modele.LoginModel;
+@{
+    Layout = "_layout";
+}
+<head>
+    <link href="~/css/account/accountautorization.css" rel="stylesheet" />
+</head>
+<div class="contentHome">
+    <div class="LoginOut LoginOpen">
+        <h2>Вход на сайт</h2>
+        <form method ="post" asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <div class="loginANDpassword">
+                    <label class="LabelLogin">Введите Login</label>
+                    <input asp-for="Name" type="text" />
+                    <span asp-validation-for="Name" />
+                </div>
+                <div>
+                    <label>Введите Password</label>
+                    <input asp-for="Password" />
+                    <span asp-validation-for="Password"/>
+                </div>
+                <input class="ButtonAction" type="submit" value="Войти" />
+            </div>
+        </form>
+    </div>
+</div>

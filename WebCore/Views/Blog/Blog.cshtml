@@ -1,4 +1,55 @@
-﻿@{
+﻿@model WebCore.Domain.Models.BlogNews
+@{
 	Layout = "_Layout";
 }
-<h1> Blog Controller</h1>
+
+<head>
+	<link href="~/css/blog/addblognews.css" rel="stylesheet" />
+    <link href="~/css/blog/blogfingstyle.css" rel="stylesheet" />
+</head>
+<div class="contentHome">
+
+	<form>
+	<div class="BlokFundNews">
+		<input class="ButtonInput" type="text_button" name="InputFungItem">
+		<select>
+			<option>Всё</option>
+  			<option>Программирование</option>
+ 			<option>Спорт</option>
+ 			<option>Отдых</option>
+		</select>
+		<input class="Checkbox" type="checkbox" name="html" value="html"/>
+		<p class="TextCheckbox">Сортировать по дате</p>
+		<div class="ButtonFind">
+			<a class="TextButton" href="Portfolio">Find</a>
+		</div>
+	</div>
+	</form>
+
+	<div class="ItemNews">
+		<form asp-action="AddElement"  method="post" enctype="multipart/form-data">
+		<div class="ItemAddNews">
+			<div class="Image">
+				<img src="" title="нет изображения">
+			</div>
+			<div class="Categori">
+				<select asp-for="Categori">
+					<option>Всё</option>
+					<option>Программирование</option>
+					<option>Спорт</option>
+					<option>Отдых</option>
+			</select>
+			<p>Выберите категорию</p>
+					<textarea asp-for="Text_Content" placeholder="Comment..." required></textarea>
+			</div>
+			<div class="footer">
+				<input class="ButtonInputRecord" type="submit" value="Add"/>
+				<input asp-for="Time" type="date"  value="Time" asp-format="yyyy-mm-dd"/>
+			</div>
+			<br>
+				<input class="ButtonInputImage" asp-for="Url_image" type="file" name="uploadedFile" />
+		</div>
+	</form>
+	</div>
+
+</div>

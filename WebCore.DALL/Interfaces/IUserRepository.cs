@@ -9,6 +9,7 @@ namespace WebCore.DALL.Interfaces
 {
     public interface IUserRepository : IBaseRepository<User>
     {
-        User GetName(string Name);
+        Task<User> GetName(string Name);
+        Task<User> GetUserOnLogin(string name, string password);
     }
 }

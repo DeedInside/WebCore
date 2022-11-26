@@ -6,5 +6,6 @@ namespace WebCore.Service.Interfaces
 	public interface IBlogNewsService
 	{
         Task<BaseResponse<IEnumerable<BlogNews>>> GetElemetBlogNews();
+        Task<BaseResponse<bool>> AddElementBlogNews(BlogNews blogNews, string nameUser);
     }
 }

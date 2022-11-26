@@ -20,12 +20,6 @@ namespace WebCore.DALL.Repositories
         {
             _context = context;
         }
-
-        public bool Create(User Entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Delete(int id)
         {
             throw new NotImplementedException();
@@ -36,12 +30,31 @@ namespace WebCore.DALL.Repositories
             return await _context.UserSQL.ToListAsync();
         }
 
-        public User GetName(string Name)
+        public async Task<User> GetName(string Name)
+        {
+            var ret = await _context.UserSQL.FirstOrDefaultAsync( n => n.Name == Name);
+            if (ret != null)
+            {
+                return ret;
+            }
+            else
+                throw new NotImplementedException();
+        }
+
+        public User GetRecord(int id)
         {
             throw new NotImplementedException();
         }
 
-        public User GetRecord(int id)
+        public async Task<User> GetUserOnLogin(string name, string password)
+        {
+
+            return await _context.UserSQL.Include(u => u.Role)
+                    .FirstOrDefaultAsync(u => u.Name == name && u.Password == password);
+
+        }
+
+        Task<bool> IBaseRepository<User>.Create(User Entity)
         {
             throw new NotImplementedException();
         }

@@ -13,7 +13,17 @@ namespace WebCore.Service.Implementations
         {
             _userRepository = userRepository;
         }
-        
+
+        public async Task<BaseResponse<User>> GetOneUser(string name, string password)
+        {
+            var baseResponse = new BaseResponse<User>();
+            var user = await _userRepository.GetUserOnLogin(name, password);
+
+            baseResponse.Data = user;
+            baseResponse.Description = "Всё чики пуки";
+            return baseResponse;
+        }
+
         public async Task<BaseResponse<IEnumerable<User>>> GetUsers()
         {
             var baseResponse = new BaseResponse<IEnumerable<User>>();
@@ -31,6 +41,17 @@ namespace WebCore.Service.Implementations
             }
             
             return baseResponse;
+        }
+
+        public Task<User> GetUserToName(string name)
+        {
+            
+            if (name != null)
+            {
+                var ret = _userRepository.GetName(name);
+                return ret;
+            }
+            throw new NotImplementedException();
         }
     }
 }
