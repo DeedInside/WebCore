@@ -15,10 +15,27 @@
 	<div class="Wrapper">
 		<div class="sidebar">
 			<img class="user" src="~/image/cat.png" title="img" />
-			<div class="box">
-				<p>Зубенко Михаил</p>
-				<h1>C# Developer</h1>
-			</div>
+			@if(User.Identity.IsAuthenticated)
+			{
+				<div class="box">
+					<p>@User.Identity.Name</p>
+					<h1>C# Developer</h1>
+				</div>
+				<div class="boxUser">
+					<a asp-controller="Account" asp-action="Logout">Exit</a> <br />
+				</div>
+			}
+			else
+			{
+				<div class="box">
+					<p>Добро пожаловать</p>
+					<h1>Гость</h1>
+				</div>
+				<div class="boxUser">
+					<a asp-controller="Account" asp-action="Account">Login</a><br />
+					<a href="/Account/Register">Register</a>
+				</div>
+			}
 		</div>
 
 		<div class="mainHeader">

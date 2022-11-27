@@ -1,13 +1,9 @@
-﻿using Azure;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Net.NetworkInformation;
-using WebCore.DALL.Interfaces;
-using WebCore.DALL.Repositories;
+﻿using WebCore.DALL.Interfaces;
 using WebCore.Domain.Models;
 using WebCore.Domain.Response;
 using WebCore.Service.Interfaces;
-using System.Security.Claims;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace WebCore.Service.Implementations
 {
@@ -21,32 +17,26 @@ namespace WebCore.Service.Implementations
             this.userRepository = userRepository;
         }
 
-        public async Task<BaseResponse<bool>> AddElementBlogNews(BlogNews blogNews, string nameUser)
+        public async Task<BaseResponse<bool>> AddElementBlogNews(BlogNews blogNews, string nameUser, string filePath, IFormFile uploadedFile)
         {
             var baseResponse = new BaseResponse<bool>();
 
-            //string path;
-            //if (uploadedFile == null)
-            //{
-            //    path = "/image/BlackSqaut.png";
-            //}
-            //else
-            //{
-            //    // путь к папке Files
-            //    path = "/image/" + uploadedFile.FileName;
-            //    // сохраняем файл в папку Files в каталоге wwwroot
-            //    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
-            //    {
-            //        await uploadedFile.CopyToAsync(fileStream);
-            //    }
-            //}
+
+            if (uploadedFile == null)
+            {
+                blogNews.Url_image = "/image/Undefine.jpeg";
+            }
+            else
+            {
+                blogNews.Url_image = "/image/" + uploadedFile.FileName;
+                using (var fileStream = new FileStream(filePath + "/wwwroot/" + blogNews.Url_image, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+            }
             if (blogNews.Time == null)
             {
                 blogNews.Time = DateTime.Now;
-            }
-            if(nameUser != null)
-            {
-
             }
             if (blogNews.Text_Content != null && blogNews.Categori != null)
             {

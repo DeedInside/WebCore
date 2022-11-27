@@ -20,7 +20,7 @@ namespace WebCore.DALL.Repositories
         {
             _context = context;
         }
-        public bool Delete(int id)
+        public Task<bool> Delete(int id)
         {
             throw new NotImplementedException();
         }

@@ -11,7 +11,6 @@ namespace WebCore.Controllers
     public class AccountController : Controller
     {
         public IUserService userService;
-
         public AccountController(IUserService userService)
         {
             this.userService = userService;
@@ -26,7 +25,7 @@ namespace WebCore.Controllers
                 if (model.Name != null && model.Password != null)
                 {
                     var user = await userService.GetOneUser(model.Name, model.Password);
-                    await Authenticate(user.Data); // аутентификация
+                    await Authenticate(user.Data); // autorization user
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -50,10 +49,10 @@ namespace WebCore.Controllers
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name),
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name)
             };
-                // создаем объект ClaimsIdentity
+                // creat object ClaimsIdentity
                 ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,
                     ClaimsIdentity.DefaultRoleClaimType);
-                // установка аутентификационных куки
+                // unstall Authentication Cookie
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
             }
         }

@@ -15,6 +15,6 @@ namespace WebCore.DALL.Interfaces
         Task<bool> Create(T Entity);
         T GetRecord(int id);
         Task<List<T>> GetAll();
-        bool Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

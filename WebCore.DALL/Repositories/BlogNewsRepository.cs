@@ -25,9 +25,19 @@ namespace WebCore.DALL.Repositories
 			return true;
         }
 
-		public bool Delete(int id)
+		public async Task<bool> Delete(int id)
 		{
-			throw new NotImplementedException();
+			var user = await _context.BlogNewsSQL.FirstOrDefaultAsync(u => u.Id == id);
+			if(user != null)
+			{ 
+				_context.BlogNewsSQL.Remove(user);
+				await _context.SaveChangesAsync();
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		public async Task<List<BlogNews>> GetAll()
