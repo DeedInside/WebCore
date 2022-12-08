@@ -16,11 +16,25 @@
 
     .sidebar img.user {
         /*position: initial;*/
-        height: 320px;
+        width: 320px;
         right: 50%;
     }
 
     .sidebar h1 {
         color: #21F3D7;
         font-size: 16px;
+    }
+    .sidebar div.boxUser {
+        background-color: #2C2C2C;
+        height: 80px;
+        position: relative;
+        text-align: center;
+        padding-top: 22px;
+        margin-top: 10%;
+    }
+    .sidebar a:active,
+    a{
+        text-decoration: none;
+        color: white;
+        transition: transform .2s ease-in-out;
     }

@@ -1,12 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebCore.Service.Implementations;
+using WebCore.Service.Interfaces;
 
 namespace WebCore.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IUserService UserService;
+        public IBlogNewsService BlogNewsService;
+
+        public HomeController(IUserService userService, IBlogNewsService blogNewsService)
         {
-            return View();
+            UserService = userService;
+            BlogNewsService = blogNewsService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var response = await BlogNewsService.GetElemetBlogNews();
+
+            return View(response.Data);
         }
     }
 }

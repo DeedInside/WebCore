@@ -14,24 +14,42 @@
 	<div class="Traigle"></div>
 	<div class="Wrapper">
 		<div class="sidebar">
-			<img class="user" src="~/image/cat.png" title="img" />
-			<div class="box">
-				<p>Зубенко Михаил</p>
-				<h1>C# Developer</h1>
-			</div>
+			@if(User.Identity.IsAuthenticated)
+			{
+				<img class="user" src="@User.FindFirst("ImageUser").Value" title="img" />
+				<div class="box">
+					<p>@User.Identity.Name</p>
+					<h1>C# Developer</h1>
+				</div>
+				<div class="boxUser">
+					<a asp-controller="Account" asp-action="Logout">Exit</a> <br />
+				</div>
+			}
+			else
+			{
+				<img class="user" src="~/image/cat.png" title="img" />
+				<div class="box">
+					<p>Добро пожаловать</p>
+					<h1>Гость</h1>
+				</div>
+				<div class="boxUser">
+					<a asp-controller="Account" asp-action="Account">Login</a><br />
+					<a asp-controller="Register" asp-action="Register">Register</a>
+				</div>
+			}
 		</div>
 
 		<div class="mainHeader">
 			<div class="header">
 				<div class="list_li"></div>
 				<ul>
-					<li><a class="item" href="#">Home</a></li>
+					<li><a class="item" asp-controller="Home" asp-action="Index">Home</a></li>
 					<li><a class="item" href="#">About</a></li>
 					<li><a class="item" href="#">Skils</a></li>
 					<li><a class="item" href="#">Edication</a></li>
 					<li><a class="item" href="#">Portfolio</a></li>
 					<li><a class="item" href="#">Experiece</a></li>
-					<li><a class="item" href="#">Blog</a></li>
+					<li><a class="item" asp-controller="Blog" asp-action="Blog" >Blog</a></li>
 					<li><a class="item" href="#">Contact</a></li>
 					<li><img src="~/image/magnifier.png"/></li>
 					<li><img src="~/image/menu.png"/></li>

@@ -1,9 +1,12 @@
-﻿@{
+﻿@model IEnumerable<WebCore.Domain.Models.BlogNews>
+@{
 	Layout = "_Layout";
 }
 <head>
     <link href="~/css/homeindex/homecontentcss.css" rel="stylesheet" />
     <link href="~/css/homeindex/content.css" rel="stylesheet" />
+    <link href="~/css/homeindex/blogfingstyle.css" rel="stylesheet" />
+    <link href="~/css/homeindex/blognewsstyle.css" rel="stylesheet" />
 </head>
 <div class="contentHome">
 	<div class="left">
@@ -21,5 +24,40 @@
 </div>
 
 <div class="content">
-	<H1> Content </H1>
+	<form>
+	<div class="BlokFundNews">
+		<input class="ButtonInput" type="text_button" name="InputFungItem">
+		<select>
+			<option>Всё</option>
+  			<option>Программирование</option>
+ 			<option>Спорт</option>
+ 			<option>Отдых</option>
+		</select>
+		<input class="Checkbox" type="checkbox" name="html" value="html"/>
+		<p class="TextCheckbox">Сортировать по дате</p>
+		<div class="ButtonFind">
+			<a class="TextButton" href="Portfolio">Find</a>
+		</div>
+	</div>
+	</form>
+
+	@foreach(var item in Model)
+	{
+	<form>
+	<div class="ItemNews">
+		<div class="Image">
+			<img src="@item.Url_image">
+		</div>
+		<div class="Content">
+			@item.Categori
+			<a class="text_button" href="Portfolio">...</a>
+		</div>	
+		<div class="Content">@item.Text_Content
+		</div>
+		<div class="Time">
+			@item.Time.Value.Date.ToString("dd:MM:yyyy")
+		</div>
+	</div>
+	</form>
+	}	
 </div>

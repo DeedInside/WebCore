@@ -1,0 +1,41 @@
+﻿.ItemNews {
+    width: 98%;
+    margin: 10px;
+    display: inline-block;
+    background-color: #2C2C2C;
+}
+    .ItemNews div.Image {
+        float: left;
+        margin: 5px;
+        border: 2px groove #21F3D7;
+    }
+
+    .ItemNews img {
+        max-height: 280px;
+        min-width: 280px;
+        width: 280px;
+    }
+
+.ItemNews a.text_button {
+    float: right;
+    height: 25px;
+    width: 23px;
+}
+
+.Content_news_fight {
+    float: left;
+    width: 66%;
+    margin: 5px;
+}
+
+.ItemNews div.Time {
+    float: right;
+    font-size: 14px;
+    margin-right: 15px;
+}
+
+.ItemNews div.Content {
+    float: left;
+    width: 66%;
+    margin: 5px;
+}

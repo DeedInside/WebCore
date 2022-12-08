@@ -1,0 +1,53 @@
+﻿@model WebCore.Domain.Models.User
+@{
+    Layout = "_Layout";
+}
+<head>
+    <link href="~/css/account/adduser.css" rel="stylesheet" />
+</head>
+<div class="contentHome">
+
+<div class="ItemNews">
+        <div class="UserRegist">
+        <div class="Div_image_news_add">
+            <img src="uploadedFile" title="нет изображения">
+        </div>
+        <h2>Регистрация</h2>
+            <form asp-action="AddUser" asp-controller="Register" method="post" asp-anti-forgery="true">
+            <div class="Regist">
+                <div>
+                    <label class="table">Введите Login</label><br />
+                    <input class="table" type="text" asp-for="Name" />
+                    <span asp-validation-for="Name" />
+                </div>
+                <div>
+                    <label class="table" >Введите Email</label><br />
+                    <input class="table" type="text" asp-for="Email" />
+                    <span asp-validation-for="Email" />
+                </div>
+                <div>
+                    <label class="table" >Введите пароль</label><br />
+                    <input class="table" asp-for="Password" />
+                    <span asp-validation-for="Password" />
+                </div>
+                <div>
+                    <label class="table" >Повторите пароль</label><br />
+                    <input class="table" />
+                    <span />
+                </div>
+                <div>
+                    <label class="table" >Введите телефон</label><br />
+                    <input class="table" type="text" asp-for="PhoneNumber" />
+                    <span asp-validation-for="PhoneNumber" />
+                </div>
+            </div>
+            <input class="ButtonInputImage" type="file" name="uploadedFile" asp-for="ImageUrl" />
+            <div class="FooterFilleAndDate">
+                    <input class="Button" type="submit" value="Add" />
+                    <input class="DateTime" type="date" value="Time" asp-for="Age" asp-format="yyyy-mm-dd">
+                <p>Введите дату рождения</p>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
