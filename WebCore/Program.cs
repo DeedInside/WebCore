@@ -28,7 +28,7 @@ builder.Services.AddScoped<IBlogNewsService, BlogNewsService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => //CookieAuthenticationOptions
                 {
-                    options.LoginPath = new PathString("/Home/Index");
+                    options.LoginPath = new PathString("/Account/Account");
                     options.AccessDeniedPath = new PathString("/Home/Index");
                 });
 builder.Services.AddAuthorization();

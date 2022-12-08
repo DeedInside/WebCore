@@ -5,6 +5,7 @@ using System.Security.Claims;
 using WebCore.Domain.Models;
 using WebCore.Modele;
 using WebCore.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebCore.Controllers
 {
@@ -36,18 +37,27 @@ namespace WebCore.Controllers
             }
             return NotFound();
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
         public IActionResult Account()
         {
             return View();
         }
         private async Task Authenticate(User user)
         {
+            if(user.ImageUrl == null)
+            {
+                user.ImageUrl = "/image/Undefine.jpeg";
+            }
             if (user != null && user.Name != null )
             {
                 var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name)
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name),
+                new Claim("ImageUser", user.ImageUrl)
             };
                 // creat object ClaimsIdentity
                 ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,

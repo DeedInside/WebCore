@@ -11,5 +11,6 @@ namespace WebCore.DALL.Interfaces
     {
         Task<User> GetName(string Name);
         Task<User> GetUserOnLogin(string name, string password);
+        Task<Role> GetUserRole(string name);
     }
 }

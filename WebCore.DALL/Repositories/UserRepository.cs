@@ -51,12 +51,32 @@ namespace WebCore.DALL.Repositories
 
             return await _context.UserSQL.Include(u => u.Role)
                     .FirstOrDefaultAsync(u => u.Name == name && u.Password == password);
-
+        }
+        public async Task<bool> Create(User Entity)
+        {
+            if (Entity != null)
+            {
+                _context.UserSQL.AddAsync(Entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        Task<bool> IBaseRepository<User>.Create(User Entity)
+        public async Task<Role> GetUserRole(string name)
         {
-            throw new NotImplementedException();
+            Role userRole = await _context.RoleSQL.FirstOrDefaultAsync(n => n.Name == name);
+            if(userRole != null)
+            {
+                return userRole;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

@@ -16,7 +16,7 @@
 
     .sidebar img.user {
         /*position: initial;*/
-        height: 320px;
+        width: 320px;
         right: 50%;
     }
 

@@ -1,4 +1,6 @@
-﻿using WebCore.DALL.Interfaces;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using WebCore.DALL.Interfaces;
 using WebCore.Domain.Models;
 using WebCore.Domain.Response;
 using WebCore.Service.Interfaces;
@@ -12,6 +14,41 @@ namespace WebCore.Service.Implementations
         public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
+        }
+        
+        public async Task<bool> AddUser(User user, string filePath, IFormFile uploadedFile)
+        {
+            User userAdd = new User()
+            {
+                Name = user.Name,
+                Password = user.Password,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+            };
+
+            if (uploadedFile == null)
+            {
+                userAdd.ImageUrl = "/image/Undefine.jpeg";
+            }
+            else
+            {
+                userAdd.ImageUrl = "/image/" + uploadedFile.FileName;
+                using (var fileStream = new FileStream(filePath + "/wwwroot/" + userAdd.ImageUrl, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+            }
+            if (userAdd.Age == null)
+            {
+                userAdd.Age = DateTime.Now;
+            }
+
+            Role userRole = await _userRepository.GetUserRole("User");
+
+            userAdd.Role = userRole;
+
+            
+            return await _userRepository.Create(userAdd);
         }
 
         public async Task<BaseResponse<User>> GetOneUser(string name, string password)

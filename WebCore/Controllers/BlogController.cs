@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using WebCore.Domain.Models;
 using WebCore.Service.Interfaces;
 
@@ -15,14 +17,15 @@ namespace WebCore.Controllers
 			this.blogNewsService = blogNewsService;
 			_appEnvironment = appEnvironment;
 		}
-
-		public IActionResult Blog()
+        [Authorize(Roles = "Admin, User, VIP")]
+        public IActionResult Blog()
 		{
 			return View();
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> AddElement(BlogNews blog, IFormFile uploadedFile)
+        [Authorize(Roles = "Admin, User, VIP")]
+        public async Task<IActionResult> AddElement(BlogNews blog, IFormFile uploadedFile)
 		{
 			if (HttpContext.User.Identity != null && HttpContext.User.Identity.Name != null)
 			{
