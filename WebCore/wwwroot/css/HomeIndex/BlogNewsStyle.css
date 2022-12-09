@@ -35,6 +35,7 @@
 }
 
 .ItemNews div.Content {
+    display:inline-block;
     float: left;
     width: 66%;
     margin: 5px;

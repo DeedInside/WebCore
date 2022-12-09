@@ -26,7 +26,7 @@
 <div class="content">
 	<form>
 	<div class="BlokFundNews">
-		<input class="ButtonInput" type="text_button" name="InputFungItem">
+		<input class="ButtonInput"  name="InputFungItem">
 		<select>
 			<option>Всё</option>
   			<option>Программирование</option>
@@ -40,24 +40,30 @@
 		</div>
 	</div>
 	</form>
-
-	@foreach(var item in Model)
+	@if (Model != null)
 	{
-	<form>
-	<div class="ItemNews">
-		<div class="Image">
-			<img src="@item.Url_image">
-		</div>
-		<div class="Content">
-			@item.Categori
-			<a class="text_button" href="Portfolio">...</a>
-		</div>	
-		<div class="Content">@item.Text_Content
-		</div>
-		<div class="Time">
-			@item.Time.Value.Date.ToString("dd:MM:yyyy")
-		</div>
-	</div>
-	</form>
-	}	
+		@foreach (var item in Model)
+		{
+			<div class="ItemNews">
+				<div class="Image">
+					<img src="@item.Url_image">
+				</div>
+				<div class="Content">
+					<h3>@item.Categori</h3>
+					@if (User.Identity.IsAuthenticated && User.FindFirst("IdUser").Value == Convert.ToString(item.UserId))
+					{
+						<form asp-controller="Home" asp-action="DeliteBlog" method="post" asp-route-id="@item.Id">
+							<input class="text_button" type="submit" value="delite">
+						</form>
+					}
+				</div>	
+				<div class="Content">@item.Text_Content
+				</div>
+				<div class="Time">
+					Автор поста: @item.UserId
+					@item.Time.Value.Date.ToString("dd:MM:yyyy")
+				</div>
+			</div>
+		}
+	}
 </div>

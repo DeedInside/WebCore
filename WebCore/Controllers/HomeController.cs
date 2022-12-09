@@ -19,8 +19,13 @@ namespace WebCore.Controllers
         public async Task<IActionResult> Index()
         {
             var response = await BlogNewsService.GetElemetBlogNews();
-
             return View(response.Data);
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeliteBlog(int id)
+        {
+            var response = await BlogNewsService.DelitElementById(id);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -10,8 +10,8 @@ namespace WebCore.Service.Implementations
 	public class BlogNewsService : IBlogNewsService
 	{
         private readonly IBlogNewsRepository? blogNewsRepository;
-        private readonly IUserRepository userRepository;
-        public BlogNewsService(IBlogNewsRepository? blogNewsRepository, IUserRepository userRepository)
+        private readonly IUserRepository? userRepository;
+        public BlogNewsService(IBlogNewsRepository? blogNewsRepository, IUserRepository? userRepository)
         {
             this.blogNewsRepository = blogNewsRepository;
             this.userRepository = userRepository;
@@ -55,6 +55,24 @@ namespace WebCore.Service.Implementations
 
 
             return baseResponse;
+        }
+
+        public async Task<BaseResponse<bool>> DelitElementById(int id)
+        {
+            var retur = new BaseResponse<bool>();
+            bool rez = await blogNewsRepository.Delete(id);
+            if (rez)
+            {
+                retur.Data = true;
+                retur.Description = "Элемент удачен усмешно";
+                return retur;
+            }
+            else
+            {
+                retur.Data = false;
+                retur.Description = "Ошибка удаления элемента";
+                return retur;
+            }
         }
 
         public async Task<BaseResponse<IEnumerable<BlogNews>>> GetElemetBlogNews()

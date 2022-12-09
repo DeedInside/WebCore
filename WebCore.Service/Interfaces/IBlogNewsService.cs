@@ -8,5 +8,6 @@ namespace WebCore.Service.Interfaces
 	{
         Task<BaseResponse<IEnumerable<BlogNews>>> GetElemetBlogNews();
         Task<BaseResponse<bool>> AddElementBlogNews(BlogNews blogNews, string nameUser, string filePath, IFormFile uploadedFile);
+        Task<BaseResponse<bool>> DelitElementById(int id);
     }
 }

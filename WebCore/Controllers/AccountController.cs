@@ -57,7 +57,9 @@ namespace WebCore.Controllers
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name),
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name),
-                new Claim("ImageUser", user.ImageUrl)
+                new Claim("ImageUser", user.ImageUrl),
+                new Claim("IdUser", Convert.ToString(user.Id))
+
             };
                 // creat object ClaimsIdentity
                 ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,
