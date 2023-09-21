@@ -15,7 +15,13 @@ namespace WebCore.Service.Implementations
         {
             _userRepository = userRepository;
         }
-        
+        /// <summary>
+        /// adds record of user in BD
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="filePath"></param>
+        /// <param name="uploadedFile"></param>
+        /// <returns></returns>
         public async Task<bool> AddUser(User user, string filePath, IFormFile uploadedFile)
         {
             User userAdd = new User()
@@ -38,6 +44,7 @@ namespace WebCore.Service.Implementations
                     await uploadedFile.CopyToAsync(fileStream);
                 }
             }
+            //todo: record date in form
             if (userAdd.Age == null)
             {
                 userAdd.Age = DateTime.Now;
@@ -50,7 +57,12 @@ namespace WebCore.Service.Implementations
             
             return await _userRepository.Create(userAdd);
         }
-
+        /// <summary>
+        /// Returns user from DB by name and passwor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public async Task<BaseResponse<User>> GetOneUser(string name, string password)
         {
             var baseResponse = new BaseResponse<User>();
@@ -60,7 +72,10 @@ namespace WebCore.Service.Implementations
             baseResponse.Description = "Всё чики пуки";
             return baseResponse;
         }
-
+        /// <summary>
+        /// returns list user from BD
+        /// </summary>
+        /// <returns></returns>
         public async Task<BaseResponse<IEnumerable<User>>> GetUsers()
         {
             var baseResponse = new BaseResponse<IEnumerable<User>>();
@@ -79,7 +94,12 @@ namespace WebCore.Service.Implementations
             
             return baseResponse;
         }
-
+        /// <summary>
+        /// returns user by name from BD
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public Task<User> GetUserToName(string name)
         {
             

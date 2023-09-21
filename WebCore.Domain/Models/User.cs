@@ -26,14 +26,41 @@ namespace WebCore.Domain.Models
         public User()
         {
         }
+        /// <summary>
+        /// id user
+        /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// name user
+        /// </summary>
         public string? Name { get; set; }
+        /// <summary>
+        /// password user
+        /// </summary>
         public string? Password { get; set; }
+        /// <summary>
+        /// e-mail user
+        /// </summary>
         public string? Email { get; set; }
+        /// <summary>
+        /// user's date of birth 
+        /// </summary>
         public DateTime Age { get; set; }
+        /// <summary>
+        /// phone number
+        /// </summary>
         public string? PhoneNumber { get; set; }
+        /// <summary>
+        /// url of the user's image
+        /// </summary>
         public string? ImageUrl { get; set; }
+        /// <summary>
+        /// Role user
+        /// </summary>
         public Role? Role { get; set; }
+        /// <summary>
+        /// id role user
+        /// </summary>
         public int RoleId { get; set; }
     }
 }

@@ -16,7 +16,14 @@ namespace WebCore.Service.Implementations
             this.blogNewsRepository = blogNewsRepository;
             this.userRepository = userRepository;
         }
-
+        /// <summary>
+        /// adds record in DB
+        /// </summary>
+        /// <param name="blogNews"></param>
+        /// <param name="nameUser">name user</param>
+        /// <param name="filePath">path image</param>
+        /// <param name="uploadedFile">image load</param>
+        /// <returns></returns>
         public async Task<BaseResponse<bool>> AddElementBlogNews(BlogNews blogNews, string nameUser, string filePath, IFormFile uploadedFile)
         {
             var baseResponse = new BaseResponse<bool>();
@@ -50,13 +57,17 @@ namespace WebCore.Service.Implementations
                 };
                 var ret = await blogNewsRepository.Create(blog);
                 baseResponse.Data = ret;
-                baseResponse.Description = "am not eby kak the work";
+                baseResponse.Description = "description";
             }
 
 
             return baseResponse;
         }
-
+        /// <summary>
+        /// delits record from a blog by id 
+        /// </summary>
+        /// <param name="id">id record</param>
+        /// <returns></returns>
         public async Task<BaseResponse<bool>> DelitElementById(int id)
         {
             var retur = new BaseResponse<bool>();
@@ -74,7 +85,10 @@ namespace WebCore.Service.Implementations
                 return retur;
             }
         }
-
+        /// <summary>
+        /// return all data from DB
+        /// </summary>
+        /// <returns></returns>
         public async Task<BaseResponse<IEnumerable<BlogNews>>> GetElemetBlogNews()
 		{
             var baseResponse = new BaseResponse<IEnumerable<BlogNews>>();
@@ -88,7 +102,7 @@ namespace WebCore.Service.Implementations
             }
             else
             {
-                baseResponse.Description = "Всё пошло по пиздец, переделывай";
+                baseResponse.Description = "УПС......не вернул";
             }
 
             return baseResponse;

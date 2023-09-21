@@ -17,6 +17,11 @@ namespace WebCore.DALL.Repositories
         {
             _context = context;
         }
+		/// <summary>
+		/// adds an entry to DB
+		/// </summary>
+		/// <param name="Entity">record blog</param>
+		/// <returns></returns>
         public async Task<bool> Create(BlogNews Entity)
 		{
 			await _context.BlogNewsSQL.AddAsync(Entity);
@@ -24,7 +29,11 @@ namespace WebCore.DALL.Repositories
 
 			return true;
         }
-
+		/// <summary>
+		/// removeat record by id
+		/// </summary>
+		/// <param name="id">id record</param>
+		/// <returns></returns>
 		public async Task<bool> Delete(int id)
 		{
 			var user = await _context.BlogNewsSQL.FirstOrDefaultAsync(u => u.Id == id);
@@ -39,13 +48,21 @@ namespace WebCore.DALL.Repositories
 				return false;
 			}
 		}
-
+		/// <summary>
+		/// return all db BlogNewsSQL
+		/// </summary>
+		/// <returns></returns>
 		public async Task<List<BlogNews>> GetAll()
 		{
             return await _context.BlogNewsSQL.ToListAsync();
         }
-
-		public BlogNews GetRecord(int id)
+        /// <summary>
+        /// todo: return record in BlogNewsSQL by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public BlogNews GetRecord(int id)
 		{
 			throw new NotImplementedException();
 		}

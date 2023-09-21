@@ -12,6 +12,22 @@ body {
     color: white;
     background-color: #0A0A0A;
 }
+.ItemNews {
+    width: 98%;
+    margin: 10px;
+    display: inline-block;
+    background-color: #2C2C2C;
+}
+
+.contentHome {
+    float: left;
+    width: 71%;
+    height: 100%;
+    background-color: #222222;
+    margin: 10px;
+}
+
+
 
 .Wrapper {
     margin-top: 100px;
